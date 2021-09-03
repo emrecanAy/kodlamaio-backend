@@ -14,6 +14,7 @@ import kodlamaio.newnorthwind.business.abstracts.ProductService;
 import kodlamaio.newnorthwind.core.utilities.results.DataResult;
 import kodlamaio.newnorthwind.core.utilities.results.Result;
 import kodlamaio.newnorthwind.entities.concretes.Product;
+import kodlamaio.newnorthwind.entities.dtos.ProductWithCategoryDto;
 
 @RestController
 @RequestMapping("/api/products")
@@ -81,6 +82,11 @@ public class ProductsController {
 	@GetMapping("/getByNameAndCategory")
 	public DataResult<List<Product>> getByNameAndCategory(@RequestParam String productName, @RequestParam int categoryId){
 		return this.productService.getByNameAndCategory(productName, categoryId);
+	}
+	
+	@GetMapping("/getProductWithCategoryDetails")
+	public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails(){
+		return this.productService.getProductWithCategoryDetails();
 	}
 	
 }
